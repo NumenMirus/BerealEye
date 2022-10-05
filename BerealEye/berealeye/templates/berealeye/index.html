@@ -1,0 +1,65 @@
+{% extends 'berealeye/base.html' %}
+{% block head %}{% endblock %}
+
+{% block body %}
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="color: black;">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Your Info</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="color: black;">
+            <strong>Username: </strong>{{ me.username }} <br>
+            <strong>Full Name:</strong>{{ me.full_name }} <br>
+            <strong>ID:</strong>{{ me.id }} <br>
+            <strong>Location:</strong>{% if me.location %}{{ me.location }}{% else %}<p>None</p> {% endif %}<br>
+            <strong>Phone number:</strong>{{ me.phone_number }} <br>
+            <strong>Region:</strong>{{ me.region }} <br>
+            <strong>Devices:</strong>{{ me.devices }} <br>
+            <strong>Country code:</strong>{{ me.country_code }} <br>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 style="text-align: center;">Be.real Eye</h1>
+                {% load static %}
+                <a data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Your Info">
+                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <img src="{% static 'berealeye/images/male_user_icon.png' %}" class="inverted-color" width="70px" style="margin-left: auto; display: block;">
+                    </a>
+                    <a href="/refresh"><button class="button1">Refresh Token</button><a>
+                    <a href="/logout"><button class="button1">Logout</button><a>
+                </a>
+                <hr>
+                <br>
+            </div>
+        </div>
+        {% for post in feed_dicts %}
+            <div class="row">
+                <div class="col-2">
+                    <div>
+                    <p>{{ post.username }}</p><br>
+                    {% load static %}
+                    <img src="{% static 'berealeye/images/male_user_icon.png' %}" class="inverted-color" width="50px">
+                    </div>
+                </div>
+                <div class="col" style="text-align: center; margin-bottom: 5%; border: 2px solid white; border-radius: 12px;">
+                    <img src="{{ post.primary_photo.url }}" width="100%">
+                </div>
+                <div class="col" style="text-align: center; margin-bottom: 5%; border: 2px solid white; border-radius: 12px;">
+                    <img src="{{ post.secondary_photo.url }}" width="100%">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    
+{% endblock %}

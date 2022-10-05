@@ -1,0 +1,30 @@
+:root {
+    --background: rgb(0, 0, 0);
+}
+
+* {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: white;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+.inverted-color {
+    color: invert(100%);
+    background-color: invert(100%);
+    filter: invert(100%);
+}
+
+.button1 {
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+}
