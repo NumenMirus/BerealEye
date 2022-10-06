@@ -35,7 +35,7 @@ def refresh_token(request):
     new_token = bfw.refresh(user, token.token)
     token.token = new_token
     token.save()
-    return redirect('berealeye/index.html')
+    return redirect('/')
 
 def logout(request):
     token = models.Tokens.objects.first()
